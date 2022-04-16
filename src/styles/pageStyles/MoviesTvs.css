@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Rubik:wght@300&display=swap');
+
+body{
+    background-color: #111;
+    color: #fff;
+    font-family: 'Roboto', 'sans-serif';
+    width: 100vw;
+}
+
+.lists{
+    margin-top: -150px;
+}
+
+@media (max-width: 800px){
+    .lists{
+        margin-top: -50px;
+    }
+}
