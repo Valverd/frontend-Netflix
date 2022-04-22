@@ -7,10 +7,10 @@ export default function ButtonLogout() {
 
     return(
         
-        <button onClick={() => {
+        <p className="link-nav" onClick={() => {
             localStorage.removeItem('auth_token');
             dispatch(logoutAction());
-        }}>Sair</button>
+        }}>Sair</p>
     )
 
 }

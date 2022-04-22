@@ -4,14 +4,12 @@ import Tmdb from "../Tmdb";
 import '../styles/pageStyles/MoviesTvs.css';
 import FeaturedMovie from "../components/FeaturedMovie";
 import Nav from "../components/Nav";
-import { useLocation } from "react-router-dom";
 
 export default function Movies() {
 
     const [movieList, setMovieList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
     const [blackNav, setBlackNav] = useState(false);
-    const location = useLocation();
     const isMovie = true;
 
     useEffect(() => {
@@ -63,7 +61,7 @@ export default function Movies() {
             <section className="lists">
                 {movieList.map((movies, i) => {
                     return (
-                        <MovieRow title={movies.title} items={movies.items.data} key={i} location={location} />
+                        <MovieRow key={i} title={movies.title} items={movies.items.data} isMovie={isMovie} />
                     )
                 })}
             </section>

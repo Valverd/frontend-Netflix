@@ -113,16 +113,13 @@ const Tmdb = {
             switch(type) {
                 case '/movies':
                     info = await basicFetch(`/movie/${movieID}?language=pt-BR&api_key=${API_KEY}`);
-                break;
+                    return info;
                 case '/tvs':
                     info = await basicFetch(`/tv/${movieID}?language=pt-BR&api_key=${API_KEY}`);
-                break;
+                    return info;
                 default:
-                    info = {};
-                break;
+                    return info;
             };
-
-            return info;
         };
 
     }

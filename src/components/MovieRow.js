@@ -4,7 +4,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function MovieRow({ title, items, location }) {
+export default function MovieRow({ title, items, location, isMovie }) {
 
     const [scrollX, setScrollX] = useState(0);
 
@@ -50,7 +50,7 @@ export default function MovieRow({ title, items, location }) {
                     {
                         items.results.length > 0 && items.results.map((movie, i) => {
                             return (
-                                <Link className="movieRow--item" key={i} to={`/watch/${movie.id}`} state={location}>
+                                <Link className="movieRow--item" key={i} to={isMovie ? `/watch/movies/` + movie.id : `/watch/tvs/` + movie.id} state={location}>
                                     <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.title}`} />
                                 </Link>
                             )

@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Movies from './pages/Movies';
 import Tvs from './pages/Tvs';
-import Watch from './pages/Watch';
+import WatchMovie from './pages/WatchMovie';
 import PrivateRoute from './auth/PrivateRoute';
 import persistStore from 'redux-persist/es/persistStore';
 
@@ -29,7 +29,7 @@ function App() {
             <Route path='register' element={<Register />} />
             <Route path='movies' element={<PrivateRoute> <Movies /> </PrivateRoute>} />
             <Route path='tvs' element={<PrivateRoute> <Tvs /> </PrivateRoute>} />
-            <Route path='watch/:id' element={<PrivateRoute> <Watch /> </PrivateRoute>}/>
+            <Route path='watch/movies/:id' element={<PrivateRoute> <WatchMovie /> </PrivateRoute>}/>
           </Routes>
 
         </BrowserRouter>

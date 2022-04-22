@@ -15,7 +15,7 @@
     background-color: #141414;
 }
 
-.left-links-nav, .right-links-nav{
+.left-links-nav, .right-links-nav, .show-nav{
     display: flex;
     align-items: center;
 }
@@ -55,5 +55,7 @@
 }
 
 .right-links-nav p{
-    margin-left: 10px;
+    color: #fff;
+    margin-left: 25px;
+    cursor: pointer;
 }
