@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Movies from './pages/Movies';
 import Tvs from './pages/Tvs';
 import WatchMovie from './pages/WatchMovie';
+import WatchTV from './pages/WatchTv';
 import PrivateRoute from './auth/PrivateRoute';
 import persistStore from 'redux-persist/es/persistStore';
 
@@ -30,6 +31,7 @@ function App() {
             <Route path='movies' element={<PrivateRoute> <Movies /> </PrivateRoute>} />
             <Route path='tvs' element={<PrivateRoute> <Tvs /> </PrivateRoute>} />
             <Route path='watch/movies/:id' element={<PrivateRoute> <WatchMovie /> </PrivateRoute>}/>
+            <Route path='watch/tvs/:id' element={<PrivateRoute> <WatchTV /> </PrivateRoute>}/>
           </Routes>
 
         </BrowserRouter>
