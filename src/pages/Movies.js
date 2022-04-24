@@ -30,6 +30,8 @@ export default function Movies() {
 
         loadAll();
 
+        document.title = "Filmes";
+
     }, [])
 
 

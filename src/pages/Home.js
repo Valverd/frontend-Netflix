@@ -1,7 +1,13 @@
 import LoginForm from "../components/LoginForm";
 import '../styles/pageStyles/Home.css';
+import { useEffect } from "react";
 
 export default function Home() {
+
+    useEffect(() => {
+        document.title = "Home"
+     }, []);
+     
 
     return (
         <div className="home">

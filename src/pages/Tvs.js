@@ -30,6 +30,8 @@ export default function Tvs() {
 
         loadAll();
 
+        document.title = "Séries";
+
     }, [])
 
 

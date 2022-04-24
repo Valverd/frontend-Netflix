@@ -21,6 +21,9 @@ export default function Watch() {
 
         getInfo();
 
+        let title = item ? item.data.title : '';
+        document.title = `Filmes - ${title}`;
+
     }, []);
 
 

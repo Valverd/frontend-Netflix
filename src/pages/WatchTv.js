@@ -17,6 +17,8 @@ export default function Watch() {
         async function getInfo() {
             let info = await Tmdb.getMovieInfo(params, '/tvs');
             setItem(info);
+            console.log(info);
+
         }
 
         getInfo();
@@ -49,7 +51,7 @@ export default function Watch() {
 
             <div className='watch--movie'>
                 <div className="watch--title">
-                    {item && item.data.title}
+                    {item && item.data.name}
                 </div>
                 <a href='#' className='watch--btn'>Assistir</a>
                 <div className="watch--info">
