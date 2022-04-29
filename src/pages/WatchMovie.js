@@ -21,9 +21,6 @@ export default function Watch() {
 
         getInfo();
 
-        let title = item ? item.data.title : '';
-        document.title = `Filmes - ${title}`;
-
     }, []);
 
 
@@ -32,6 +29,8 @@ export default function Watch() {
     let genres = [];
 
     if (item) {
+        document.title = `Filmes - ${item.data.title}`
+
         for (let i in item.data.genres) {
             genres.push(item.data.genres[i].name);
         };
@@ -44,33 +43,39 @@ export default function Watch() {
         return hrs;
     }
 
-
-    return (
+    return item ? (
         <div className="watch" style={{
-            backgroundImage: item && `url(https://image.tmdb.org/t/p/original${item.data.backdrop_path})`
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${item.data.backdrop_path})`
         }}>
+
             <Nav isMovie={isMovie}></Nav>
 
             <div className='watch--fade'></div>
 
             <div className='watch--movie'>
                 <div className="watch--title">
-                    {item && item.data.title}
+                    {item.data.title}
                 </div>
                 <a href='#' className='watch--btn'>Assistir</a>
                 <div className="watch--info">
-                    <div className='watch--average'>{item && item.data.vote_average}</div>
-                    <div>{item && release_date.getFullYear()}</div>
-                    <div>{item && runtime}</div>
+                    <div className='watch--average'>{item.data.vote_average}</div>
+                    <div>{release_date.getFullYear()}</div>
+                    <div>{runtime}</div>
                 </div>
                 <div className='watch--overview'>
-                    <div>{item && item.data.overview}</div>
+                    <div>{item.data.overview}</div>
                 </div>
                 <div className='watch--genres'>
-                    <strong>Gêneros: </strong>{item && genres.join(', ')}
+                    <strong>Gêneros: </strong>{genres.join(', ')}
                 </div>
 
             </div>
         </div>
+    ) 
+    
+    : //caso item não tenha sido carregado ele para para o carregando.
+    
+    (
+        <div>Carregando...</div>
     );
 };

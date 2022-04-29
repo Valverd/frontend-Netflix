@@ -17,7 +17,6 @@ export default function Watch() {
         async function getInfo() {
             let info = await Tmdb.getMovieInfo(params, '/tvs');
             setItem(info);
-            console.log(info);
 
         }
 
@@ -29,6 +28,7 @@ export default function Watch() {
     let release_date = item ? new Date(item.data.first_air_date) : '';
     let genres = [];
     if (item) {
+        document.title = `Séries - ${item.data.name}`
         for (let i in item.data.genres) {
             genres.push(item.data.genres[i].name);
         };
@@ -41,9 +41,9 @@ export default function Watch() {
     }
 
 
-    return (
+    return item ? (
         <div className="watch" style={{
-            backgroundImage: item && `url(https://image.tmdb.org/t/p/original${item.data.backdrop_path})`
+            backgroundImage: `url(https://image.tmdb.org/t/p/original${item.data.backdrop_path})`
         }}>
             <Nav isMovie={isMovie}></Nav>
 
@@ -51,22 +51,28 @@ export default function Watch() {
 
             <div className='watch--movie'>
                 <div className="watch--title">
-                    {item && item.data.name}
+                    {item.data.name}
                 </div>
                 <a href='#' className='watch--btn'>Assistir</a>
                 <div className="watch--info">
-                    <div className='watch--average'>{item && item.data.vote_average}</div>
-                    <div>{item && release_date.getFullYear()}</div>
-                    <div>{item && item.data.seasons.length} Temporada{item && seasonsOrSeason(item.data.seasons.length)}</div>
+                    <div className='watch--average'>{item.data.vote_average}</div>
+                    <div>{release_date.getFullYear()}</div>
+                    <div>{item.data.seasons.length} Temporada{seasonsOrSeason(item.data.seasons.length)}</div>
                 </div>
                 <div className='watch--overview'>
-                    <div>{item && item.data.overview}</div>
+                    <div>{item.data.overview}</div>
                 </div>
                 <div className='watch--genres'>
-                    <strong>Gêneros: </strong>{item && genres.join(', ')}
+                    <strong>Gêneros: </strong>{genres.join(', ')}
                 </div>
 
             </div>
         </div>
-    );
+    ) 
+    
+    :
+
+    (
+        <div>Carregando...</div>
+    )
 };
