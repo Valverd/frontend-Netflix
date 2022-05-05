@@ -10,7 +10,7 @@ export default function Movies() {
     const [movieList, setMovieList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
     const [blackNav, setBlackNav] = useState(false);
-    const isMovie = true;
+    const movie_tv_myList = 'movie';
 
     useEffect(() => {
 
@@ -20,7 +20,6 @@ export default function Movies() {
             setMovieList(list);
 
             //pegando o featuredMovie
-            //peguei do originals netflix porque possui mais conteúdo
             let trending = list.filter(item => item.slug === "trending");
             let randomChoose = Math.floor(Math.random() * (trending[0].items.data.results.length - 1));
             let choosen = trending[0].items.data.results[randomChoose];
@@ -54,16 +53,16 @@ export default function Movies() {
     return (
         <div className="container">
 
-            <Nav black={blackNav} isMovie={isMovie} />
+            <Nav black={blackNav} movie_tv_myList={movie_tv_myList} />
 
             {featuredData &&
-                <FeaturedMovie item={featuredData} isMovie={isMovie} />
+                <FeaturedMovie item={featuredData} movie_tv_myList={movie_tv_myList} />
             }
 
             <section className="lists">
                 {movieList.map((movies, i) => {
                     return (
-                        <MovieRow key={i} title={movies.title} items={movies.items.data} isMovie={isMovie} />
+                        <MovieRow key={i} title={movies.title} items={movies.items.data} movie_tv_myList={movie_tv_myList} />
                     )
                 })}
             </section>

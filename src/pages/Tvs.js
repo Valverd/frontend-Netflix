@@ -10,7 +10,7 @@ export default function Tvs() {
     const [tvList, setTvList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
     const [blackNav, setBlackNav] = useState(false);
-    const isMovie = false;
+    const movie_tv_myList = 'tv';
 
     useEffect(() => {
 
@@ -54,16 +54,16 @@ export default function Tvs() {
     return (
         <div className="container">
 
-            <Nav black={blackNav} isMovie={isMovie} />
+            <Nav black={blackNav} movie_tv_myList={movie_tv_myList} />
 
             {featuredData &&
-                <FeaturedMovie item={featuredData} isMovie={isMovie} />
+                <FeaturedMovie item={featuredData} movie_tv_myList={movie_tv_myList} />
             }
 
             <section className="lists">
                 {tvList.map((movies, i) => {
                     return (
-                        <MovieRow key={i} title={movies.title} items={movies.items.data} isMovie={isMovie} />
+                        <MovieRow key={i} title={movies.title} items={movies.items.data} movie_tv_myList={movie_tv_myList} />
                     )
                 })}
             </section>

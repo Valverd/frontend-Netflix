@@ -25,10 +25,10 @@ export default function LoginForm() {
                     dispatch(loginAction(user.data));
                     localStorage.setItem('auth_token', JSON.stringify(user.data.token));
                     navigate('/movies');
-            })
-                .catch(() => {
+            }).catch(() => {
                     alert("Email ou senha digitados incorretamente!");
                 });
+
         } catch (err) {
             alert(err);
         };

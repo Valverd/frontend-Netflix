@@ -10,14 +10,13 @@ export default function Watch() {
     //caso a nav esteja na rota watch, ela não pegue os links 'filmes' e 'videos'
     const params = useParams().id;
     const [item, setItem] = useState(null);
-    const isMovie = false;
+    const movie_tv_myList = 'tv';
 
     useEffect(() => {
 
         async function getInfo() {
             let info = await Tmdb.getMovieInfo(params, '/tvs');
             setItem(info);
-
         }
 
         getInfo();
@@ -45,7 +44,7 @@ export default function Watch() {
         <div className="watch" style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${item.data.backdrop_path})`
         }}>
-            <Nav isMovie={isMovie}></Nav>
+            <Nav movie_tv_myList={movie_tv_myList}></Nav>
 
             <div className='watch--fade'></div>
 

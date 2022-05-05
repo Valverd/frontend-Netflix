@@ -4,7 +4,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function MovieRow({ title, items, movie_tv_myList }) {
+export default function MovieRowList({ title, items, movie_tv_myList }) {
 
     switch(movie_tv_myList){
         case 'movie':
@@ -32,7 +32,7 @@ export default function MovieRow({ title, items, movie_tv_myList }) {
     const handleRigthScroll = () => {
 
         let x = scrollX - window.innerWidth / 2;
-        let movieRowWidth = items.results.length * 150;
+        let movieRowWidth = items.length * 150;
         if(x < (window.innerWidth - movieRowWidth)) {
             x = (window.innerWidth - movieRowWidth - 60); // o 60 é padding que eu coloquei na lista
         };
@@ -57,10 +57,10 @@ export default function MovieRow({ title, items, movie_tv_myList }) {
 
                 <div className="movieRow--list" style={{
                     marginLeft: scrollX,
-                    width: items.results.length * 150
+                    width: items.length * 150
                 }}>
                     {
-                        items.results.length > 0 && items.results.map((movie, i) => {
+                        items.length > 0 && items.map((movie, i) => {
                             return (
                                 <Link className="movieRow--item" key={i} to={movie_tv_myList ? `/watch/movies/` + movie.id : `/watch/tvs/` + movie.id}>
                                     <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.title}`} />

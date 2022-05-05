@@ -1,11 +1,11 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import '../styles/componentStyles/Nav.css';
 import ButtonLogout from "./ButtonLogout";
 
-export default function Nav({ black, isMovie, watchNav }) {
+export default function Nav({ black, movie_tv_myList }) {
 
-    // const userState = useSelector(state => state);
+    const userState = useSelector(state => state);
     // const name = userState.user.name;
 
     return (
@@ -15,12 +15,16 @@ export default function Nav({ black, isMovie, watchNav }) {
                     <img alt="Logo Netflix" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" />
                 </Link>
 
-                <Link className={isMovie ? 'link-nav borderBottom' : 'link-nav'} to={'/movies'}>
+                <Link className={movie_tv_myList == 'movie' ? 'link-nav borderBottom' : 'link-nav'} to={'/movies'}>
                     <p>Filmes</p>
                 </Link>
 
-                <Link className={isMovie ? 'link-nav' : 'link-nav borderBottom'} to={'/tvs'}>
+                <Link className={movie_tv_myList == 'tv' ? 'link-nav borderBottom' : 'link-nav'} to={'/tvs'}>
                     <p>Séries</p>
+                </Link>
+
+                <Link className={movie_tv_myList == 'my-list' ? 'link-nav borderBottom' : 'link-nav'} to={'/my-list'}>
+                    <p>Minha Lista</p>
                 </Link>
 
             </div>

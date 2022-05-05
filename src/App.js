@@ -11,6 +11,7 @@ import WatchMovie from './pages/WatchMovie';
 import WatchTV from './pages/WatchTv';
 import PrivateRoute from './auth/PrivateRoute';
 import persistStore from 'redux-persist/es/persistStore';
+import MyList from './pages/MyList';
 
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
@@ -32,6 +33,7 @@ function App() {
             <Route path='tvs' element={<PrivateRoute> <Tvs /> </PrivateRoute>} />
             <Route path='watch/movies/:id' element={<PrivateRoute> <WatchMovie /> </PrivateRoute>}/>
             <Route path='watch/tvs/:id' element={<PrivateRoute> <WatchTV /> </PrivateRoute>}/>
+            <Route path='my-list' element={<PrivateRoute> <MyList /> </PrivateRoute>}/>
           </Routes>
 
         </BrowserRouter>
