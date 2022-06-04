@@ -1,8 +1,9 @@
 import '../styles/pageStyles/Watch.css';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Tmdb from "../Tmdb";
 import Nav from '../components/Nav';
+import AddMyList from '../components/AddMyList';
 
 
 export default function Watch() {
@@ -56,7 +57,10 @@ export default function Watch() {
                 <div className="watch--title">
                     {item.data.title}
                 </div>
-                <a href='#' className='watch--btn'>Assistir</a>
+                <a href='#' className='featured--watch-btn'>Assistir</a>
+                <Link to={'#'}>
+                    <AddMyList item={item} movie_tv_myList={movie_tv_myList} />
+                </Link>
                 <div className="watch--info">
                     <div className='watch--average'>{item.data.vote_average}</div>
                     <div>{release_date.getFullYear()}</div>
@@ -71,11 +75,11 @@ export default function Watch() {
 
             </div>
         </div>
-    ) 
-    
-    : //caso item não tenha sido carregado ele para para o carregando.
-    
-    (
-        <div>Carregando...</div>
-    );
+    )
+
+        : //caso item não tenha sido carregado ele para para o carregando.
+
+        (
+            <div>Carregando...</div>
+        );
 };
